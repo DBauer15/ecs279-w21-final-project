@@ -10,7 +10,7 @@ public class Fitness : MonoBehaviour
     void Start()
     {
         sensors = GetComponentsInChildren<FitnessSensor>();
-        InvokeRepeating("PrintFitness", 1, 1);
+        InvokeRepeating("PrintFitness", 0.1f, 1);
     }
 
     public float GetFitness()

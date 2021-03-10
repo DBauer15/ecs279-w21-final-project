@@ -2,12 +2,13 @@ using UnityEngine;
 
 public class BasicGene : Gene {
 
-    Vector3 rotation;
-    float speed;
+    public Vector3 rotation;
+    public float speed;
 
     public BasicGene() {
         rotation = GenerateRandomRotation();
         speed = GenerateRandomSpeed();
+        speed = 1.0f;
     }
 
     Vector3 GenerateRandomRotation()

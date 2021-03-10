@@ -4,19 +4,15 @@ using UnityEngine;
 
 public class Cat : MonoBehaviour
 {
-    [SerializeField]
-    List<GameObject> joints;
+    CharacterJoint[] joints;
     public DNA<BasicGene> dNA;
     BasicStrategy strategy;
 
 
-    void OnEnable()
-    {
-        dNA = new DNA<BasicGene>(joints.Count);
-    }
-
     void Start() {
+        joints = GetComponentsInChildren<CharacterJoint>();
+        dNA = new DNA<BasicGene>(joints.Length);
         strategy = gameObject.AddComponent<BasicStrategy>();
-        strategy.dNA = dNA;
+        strategy.Init(dNA, joints);
     }
 }

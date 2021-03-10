@@ -180,6 +180,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3535911033508640560}
   - component: {fileID: 525036048988521760}
+  - component: {fileID: 8746028578290041267}
+  - component: {fileID: -3544717270968796978}
   m_Layer: 0
   m_Name: House_cat
   m_TagString: Untagged
@@ -281,6 +283,30 @@ MonoBehaviour:
   - {fileID: 407557097783734924}
   - {fileID: 3800664228446900316}
   - {fileID: 6079116542872576724}
+--- !u!114 &8746028578290041267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 525036048988521763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17898f544f2084a55ab3664a60202ed6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-3544717270968796978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 525036048988521763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e39365683a71423d9135364bb19c085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &681397468934809193
 GameObject:
   m_ObjectHideFlags: 0

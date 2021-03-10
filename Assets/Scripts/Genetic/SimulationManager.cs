@@ -11,7 +11,6 @@ public class SimulationManager : MonoBehaviour
     GameObject catPrefab;
     int generationCount;
     int spawnHeight;
-    int numberOfJoints = 18;
     List<Generation> generations;
 
     void Start()
@@ -25,7 +24,7 @@ public class SimulationManager : MonoBehaviour
 
     void InitGeneration()
     {
-        Generation generation = new Generation(catPrefab, catsPerGeneration, numberOfJoints, spawnHeight);
+        Generation generation = new Generation(catPrefab, catsPerGeneration, spawnHeight);
         generation.RunGeneration();
         generations.Add(generation);
         generation.generationFinishedEvent.AddListener(RunCompleted);

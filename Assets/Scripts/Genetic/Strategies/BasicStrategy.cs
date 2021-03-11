@@ -25,6 +25,7 @@ public class BasicStrategy : MonoBehaviour {
 
 
     void UpdateJoint(BasicGene gene, CharacterJoint joint) {
+        
         joint.gameObject.transform.Rotate(60 * gene.rotation * gene.speed * Time.deltaTime, Space.World);
     }
 

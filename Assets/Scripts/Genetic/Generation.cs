@@ -1,18 +1,26 @@
 using UnityEngine;
 using UnityEngine.Events;
+using System.Collections.Generic;
+using System;
+using System.Linq;
 
-class Generation
+class Generation<G,S> where G : Gene, new() where S : MonoBehaviour, Strategy<G>
 {
     public UnityEvent generationFinishedEvent;
-    int numberOfCats, numberOfJoints, spawnHeight;
+    int numberOfCats, numberOfJoints, survivorKeepPercentage, spawnHeight;
     GameObject catPrefab;
+    List<Cat> cats;
+    List<DNA<G>> dNAs;
 
-    public Generation(GameObject catPrefab, int numberOfCats, int spawnHeight)
+    public Generation(GameObject catPrefab, int numberOfCats, int survivorKeepPercentage, int spawnHeight, List<DNA<G>> dNAs = null)
     {
         generationFinishedEvent = new UnityEvent();
         this.catPrefab = catPrefab;
         this.numberOfCats = numberOfCats;
+        this.survivorKeepPercentage = survivorKeepPercentage;
         this.spawnHeight = spawnHeight;
+        this.cats = new List<Cat>();
+        this.dNAs = dNAs;
     }
 
     public void RunGeneration()
@@ -23,12 +31,26 @@ class Generation
         {
             Vector3 spawnPosition = new Vector3(0, spawnHeight, 0 + xOffset * i);
             GameObject catGameObject = GameObject.Instantiate(catPrefab, spawnPosition, Quaternion.identity);
+            Cat cat = catGameObject.GetComponent<Cat>();
+
+            if (dNAs == null)
+                cat.Init<G, S>();
+            else 
+                cat.Init<G, S>(dNAs[i]);
+            
+            cats.Add(cat);
         }
     }
 
-    void Finished()
+    public List<DNA<G>> EvaluateGeneration()
     {
-        generationFinishedEvent.Invoke();
+        List<DNA<G>> result = cats.OrderBy(c => c.GetFitness()).Take((int)(cats.Count  * survivorKeepPercentage * 10^-2)).Select(c => c.GetDNA<G>()).ToList();
+
+        foreach(Cat cat in cats) {
+            GameObject.Destroy(cat.gameObject);
+        }
+
+        return result;
     }
 
 }

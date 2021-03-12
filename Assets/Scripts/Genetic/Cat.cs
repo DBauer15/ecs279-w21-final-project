@@ -51,25 +51,41 @@ public class Cat : MonoBehaviour
 
 
 
-    CharacterJoint[] joints;
-    public DNA<BasicGene> dNA;
-    BasicStrategy strategy;
+    ConfigurableJoint[] joints;
+    Fitness fitness;
+    public object dNA;
+    public object strategy;
 
 
-    void Start() {
-        // joints = GetComponentsInChildren<CharacterJoint>();
-        CharacterJoint cj = GameObject.FindGameObjectWithTag("Test Joint").GetComponent<CharacterJoint>();
-
-        Vector3 rot = new Vector3(0,0,30);
-        float spd = 2;
-
-
-        cj.gameObject.transform.Rotate(60 * rot * spd * Time.deltaTime, Space.World);
-        
-
-
-        // dNA = new DNA<BasicGene>(joints.Length);
-        // strategy = gameObject.AddComponent<BasicStrategy>();
-        // strategy.Init(dNA, joints);
+    public void Init<G,S>() where G : Gene, new() where S : MonoBehaviour, Strategy<G>
+    {
+        this.joints = GetComponentsInChildren<ConfigurableJoint>();
+        DNA<G> dNA = new DNA<G>(joints.Length);
+        Init<G,S>(dNA);
     }
+
+    public void Init<G,S>(DNA<G> dNA) where G : Gene, new() where S : MonoBehaviour, Strategy<G>
+    {
+        this.joints = GetComponentsInChildren<ConfigurableJoint>();
+        this.dNA = dNA;
+        S strategy = gameObject.AddComponent<S>();
+        strategy.Init(GetDNA<G>(), joints);
+        this.strategy = strategy;
+
+        this.fitness = gameObject.AddComponent<Fitness>();
+    }
+
+    public DNA<G> GetDNA<G>() where G : Gene, new() 
+    {
+        return (DNA<G>)dNA;
+    }
+
+    public Strategy<G> GetStrategy<G>() where G : Gene, new() {
+        return (Strategy<G>)strategy;
+    }
+
+    public float GetFitness() {
+        return this.fitness.GetFitness();
+    }
+
 }

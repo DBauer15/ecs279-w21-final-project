@@ -13,7 +13,9 @@ public class SimulationManager : MonoBehaviour
     [SerializeField]
     int catsPerGeneration = 50;
     [SerializeField]
-    int survivorKeepPercentage = 25;
+    int survivorKeepPercentage = 5;
+    [SerializeField]
+    int survivorCutoffPercentage = 30;
     [SerializeField]
     int mutationRate = 10;
     [SerializeField]
@@ -52,7 +54,7 @@ public class SimulationManager : MonoBehaviour
 
     void StartGeneration(List<DNA<BasicGene>> dNAs = null)
     {
-        Generation<BasicGene, BasicStrategy> generation = new Generation<BasicGene, BasicStrategy>(catPrefab, catsPerGeneration, survivorKeepPercentage, spawnHeight, dNAs);
+        Generation<BasicGene, BasicStrategy> generation = new Generation<BasicGene, BasicStrategy>(catPrefab, catsPerGeneration, survivorCutoffPercentage, spawnHeight, dNAs);
         generation.RunGeneration();
         generations.Add(generation);
 
@@ -71,24 +73,33 @@ public class SimulationManager : MonoBehaviour
 
         // cleanup
         currentGeneration.Cleanup();
- 
-        // procreate & mutate
-        List<DNA<BasicGene>> newDNAs = ProcreateAndMutate(fittestDNAs);
+
+        // keep fittest, procreate and mutate
+        List<DNA<BasicGene>> newDNAs = BuildNextGeneration(fittestDNAs);
 
         generationCount++;
 
-        // run next generation with procreated dnas
+        // run next generation with new dnas
         if (generationCount < numberOfGenerations)
             StartGeneration(newDNAs);
     }
 
-    List<DNA<BasicGene>> ProcreateAndMutate(List<DNA<BasicGene>> fittestCats)
+    List<DNA<BasicGene>> BuildNextGeneration(List<DNA<BasicGene>> fittestCats)
     {
         List<DNA<BasicGene>> newDNAs = new List<DNA<BasicGene>>();
 
-        for (int i = 0; i < catsPerGeneration; i++)
+        int survivorKeep = Mathf.RoundToInt(survivorKeepPercentage * Mathf.Pow(10, -2) * catsPerGeneration);
+        
+        // add survivors
+        for (int i = 0; i < survivorKeep; i++)
         {
-            // choose random fittest cats without duplicates
+            newDNAs.Add(fittestCats[i]);
+        }
+
+        // procreate and mutate for the rest of population
+        while (newDNAs.Count < catsPerGeneration)
+        {
+            // choose random fittest cats
             int randomParentIndex1 = Random.Range(0, fittestCats.Count);
             int randomParentIndex2 = Random.Range(0, fittestCats.Count);
             while(randomParentIndex1 == randomParentIndex2)

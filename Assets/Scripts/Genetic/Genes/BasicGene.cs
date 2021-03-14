@@ -6,6 +6,10 @@ public class BasicGene : Gene {
     public float speed;
 
     public BasicGene() {
+        Randomize();
+    }
+
+    public void Randomize() {
         rotation = GenerateRandomRotation();
         speed = GenerateRandomSpeed();
         speed = 1.0f;

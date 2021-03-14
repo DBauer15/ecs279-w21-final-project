@@ -1,29 +1,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DNA<T> where T : Gene, new()
+public class DNA<G> where G : Gene, new()
 {
-    public List<T> genes;
+    public List<G> genes;
 
     public DNA()
     {
-        genes = new List<T>();
+        genes = new List<G>();
     }
 
     public DNA(int numberOfJoints)
     {
-        genes = new List<T>();
+        genes = new List<G>();
 
         for (int i = 0; i < numberOfJoints; i++)
         {
-            genes.Add(new T());
+            genes.Add(new G());
         }
 
     }
 
-    public static DNA<T> operator +(DNA<T> a, DNA<T> b)
+    public static DNA<G> operator +(DNA<G> a, DNA<G> b)
     {
-        DNA<T> combinedDNA = new DNA<T>();
+        DNA<G> combinedDNA = new DNA<G>();
 
         for (int i = 0; i < a.genes.Count; i++)
         {

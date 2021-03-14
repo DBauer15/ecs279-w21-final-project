@@ -10,7 +10,6 @@ public class Fitness : MonoBehaviour
     void Start()
     {
         sensors = GetComponentsInChildren<FitnessSensor>();
-        InvokeRepeating("PrintFitness", 0.1f, 1);
     }
 
     public float GetFitness()
@@ -26,11 +25,5 @@ public class Fitness : MonoBehaviour
     public void PrintFitness()
     {
         print(GetFitness());
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

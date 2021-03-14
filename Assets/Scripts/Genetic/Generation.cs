@@ -6,6 +6,9 @@ using System.Linq;
 
 class Generation<G, S> where G : Gene, new() where S : MonoBehaviour, Strategy<G>
 {
+    public static int INSTACE_COUNT = 0;
+
+    public int id;
     public UnityEvent generationFinishedEvent;
     int numberOfCats, numberOfJoints, survivorCutoffPercentage, spawnHeight;
     GameObject catPrefab;
@@ -21,6 +24,9 @@ class Generation<G, S> where G : Gene, new() where S : MonoBehaviour, Strategy<G
         this.spawnHeight = spawnHeight;
         this.cats = new List<Cat>();
         this.dNAs = dNAs;
+        this.id = INSTACE_COUNT;
+        INSTACE_COUNT += 1;
+        Cat.INSTACE_COUNT = 0;
     }
 
     public void RunGeneration()
@@ -66,6 +72,15 @@ class Generation<G, S> where G : Gene, new() where S : MonoBehaviour, Strategy<G
     public float GetBestFitness()
     {
         return cats.OrderByDescending(c => c.GetFitness()).Select(c => c.GetFitness()).First();
+    }
+
+    public void SerializeBest() {
+        Serialize(1);
+    }
+    public void Serialize(int n = 1) {
+        foreach (Cat cat in cats.OrderByDescending(c => c.GetFitness()).Take(n)) {
+            DNASerializer.ToFile<G>(cat.GetDNA<G>(), $"gen{id}_cat{cat.id}_fit{cat.GetFitness()}");
+        }
     }
 
     public void Cleanup()

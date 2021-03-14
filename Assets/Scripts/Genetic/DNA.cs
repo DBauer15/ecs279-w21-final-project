@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
 public class DNA<G> where G : Gene, new()
 {
     public List<G> genes;
@@ -28,7 +30,7 @@ public class DNA<G> where G : Gene, new()
 
         for (int i = 0; i < a.genes.Count; i++)
         {
-            int rand = Random.Range(0, 2);
+            int rand = UnityEngine.Random.Range(0, 2);
             combinedDNA.genes.Add(rand == 0 ? a.genes[i] : b.genes[i]);
         }
 
@@ -52,7 +54,7 @@ public class DNA<G> where G : Gene, new()
     {
         for (int i = 0; i < genes.Count; i++)
         {
-            int randomValue = Random.Range(0, 101);
+            float randomValue = UnityEngine.Random.Range(0, 101);
 
             if(randomValue < mutationRate)
             {

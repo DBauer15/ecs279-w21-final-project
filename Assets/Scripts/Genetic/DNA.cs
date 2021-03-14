@@ -48,13 +48,13 @@ public class DNA<G> where G : Gene, new()
         return combinedDNA;
     }
 
-    public void Mutate(float mutationRate)
+    public void Mutate(int mutationRate)
     {
         for (int i = 0; i < genes.Count; i++)
         {
-            float randomValue = Random.Range(0f, 1.0f);
+            int randomValue = Random.Range(0, 101);
 
-            if(mutationRate > randomValue)
+            if(randomValue < mutationRate)
             {
                 genes[i].Randomize();
             }

@@ -453,14 +453,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a4a3a21e56f343a8897706656496a19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeScale: 10
   numberOfGenerations: 1000
   catsPerGeneration: 50
   survivorKeepPercentage: 10
+  mutationRate: 10
+  mutationChance: 10
   catPrefab: {fileID: 7227160044029762981, guid: 562d4b9b93eab41e4a423547e12aaaf1,
     type: 3}
   generationText: {fileID: 1856768836}
   fitnessText: {fileID: 993009719}
-  spawnHeight: 2
+  spawnHeight: 1
 --- !u!4 &594114498
 Transform:
   m_ObjectHideFlags: 0

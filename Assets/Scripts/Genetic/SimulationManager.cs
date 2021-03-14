@@ -17,13 +17,15 @@ public class SimulationManager : MonoBehaviour
     [SerializeField]
     int mutationRate = 10;
     [SerializeField]
+    int mutationChance = 10;
+    [SerializeField]
     GameObject catPrefab;
     [SerializeField]
     Text generationText, fitnessText;
     [SerializeField]
     int spawnHeight = 2;
     int generationCount;
-    float generationMeanFitness = 0;
+    float generationMeanFitness, generationBestFitness = 0;
     
     List<Generation<BasicGene, BasicStrategy>> generations;
 
@@ -44,8 +46,8 @@ public class SimulationManager : MonoBehaviour
         if(generationText.text != ("Generation " + generationCount))
             generationText.text = ("Generation " + generationCount);            
             
-        if(fitnessText.text != ("Last Generation Mean Fitness " + generationMeanFitness))
-            fitnessText.text = ("Last Generation Mean Fitness " + generationMeanFitness); 
+        if(fitnessText.text != ($"Mean Fit.: {generationMeanFitness}, Best Fit.: {generationBestFitness}"))
+            fitnessText.text = ($"Mean Fit.: {generationMeanFitness}, Best Fit.: {generationBestFitness}"); 
     }
 
     void StartGeneration(List<DNA<BasicGene>> dNAs = null)
@@ -64,8 +66,8 @@ public class SimulationManager : MonoBehaviour
         // get fittest dnas & mean fitness
         List<DNA<BasicGene>> fittestDNAs = currentGeneration.GetFittestDNAs();
         generationMeanFitness = currentGeneration.GetAverageFitness();
-        Debug.Log("Avg: " + generationMeanFitness);
-        Debug.Log("Best: " + currentGeneration.GetBestFitness());
+        generationBestFitness = currentGeneration.GetBestFitness();
+        Debug.Log($"Mean Fit.: {generationMeanFitness}, Best Fit.: {generationBestFitness}");
 
         // cleanup
         currentGeneration.Cleanup();
@@ -99,7 +101,11 @@ public class SimulationManager : MonoBehaviour
             // DNA<BasicGene> newDNA = dNAParent1 + dNAParent2;
             DNA<BasicGene> newDNA = dNAParent1 * dNAParent2;
 
-            newDNA.Mutate(mutationRate);
+            // mutate only mutationChance percentage of cats
+            float randomValue = Random.Range(0, 101);
+
+            if(randomValue < mutationChance)
+                newDNA.Mutate(mutationRate);
 
             newDNAs.Add(newDNA);
         }

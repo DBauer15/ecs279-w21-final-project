@@ -5,7 +5,7 @@ using System.Linq;
 
 public class SimulationManager : MonoBehaviour
 {
-    [Range(0.5f, 10f)]
+    [Range(0.5f, 50f)]
     public float timeScale = 1f;
 
     [SerializeField]

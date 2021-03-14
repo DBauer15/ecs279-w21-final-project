@@ -21,6 +21,8 @@ public class SimulationManager : MonoBehaviour
     [SerializeField]
     int mutationChance = 10;
     [SerializeField]
+    bool autoProcreation = false;
+    [SerializeField]
     GameObject catPrefab;
     [SerializeField]
     Text generationText, fitnessText;
@@ -102,7 +104,7 @@ public class SimulationManager : MonoBehaviour
             // choose random fittest cats
             int randomParentIndex1 = Random.Range(0, fittestCats.Count);
             int randomParentIndex2 = Random.Range(0, fittestCats.Count);
-            while(randomParentIndex1 == randomParentIndex2)
+            while(randomParentIndex1 == randomParentIndex2 && !autoProcreation)
             {
                 randomParentIndex2 = Random.Range(0, fittestCats.Count);
             }

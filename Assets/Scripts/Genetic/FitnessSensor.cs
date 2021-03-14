@@ -42,6 +42,8 @@ public class FitnessSensor : MonoBehaviour
         if (!collision.gameObject.CompareTag("Floor"))
             return;
 
+        Debug.Log(gameObject.name);
+
         isColliding = true;
     }
 

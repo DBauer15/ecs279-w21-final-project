@@ -5,12 +5,17 @@ using System.Linq;
 
 public class SimulationManager : MonoBehaviour
 {
+    [Range(0.5f, 10f)]
+    public float timeScale = 1f;
+
     [SerializeField]
     int numberOfGenerations = 10;
     [SerializeField]
     int catsPerGeneration = 50;
     [SerializeField]
     int survivorKeepPercentage = 25;
+    [SerializeField]
+    int mutationRate = 10;
     [SerializeField]
     GameObject catPrefab;
     [SerializeField]
@@ -33,11 +38,14 @@ public class SimulationManager : MonoBehaviour
 
     void Update()
     {
+        if(Time.timeScale != timeScale)
+            Time.timeScale = timeScale;
+
         if(generationText.text != ("Generation " + generationCount))
             generationText.text = ("Generation " + generationCount);            
             
         if(fitnessText.text != ("Last Generation Mean Fitness " + generationMeanFitness))
-            fitnessText.text = ("Last Generation Mean Fitness " + generationMeanFitness);            
+            fitnessText.text = ("Last Generation Mean Fitness " + generationMeanFitness); 
     }
 
     void StartGeneration(List<DNA<BasicGene>> dNAs = null)
@@ -56,23 +64,25 @@ public class SimulationManager : MonoBehaviour
         // get fittest dnas & mean fitness
         List<DNA<BasicGene>> fittestDNAs = currentGeneration.GetFittestDNAs();
         generationMeanFitness = currentGeneration.GetAverageFitness();
+        Debug.Log("Avg: " + generationMeanFitness);
+        Debug.Log("Best: " + currentGeneration.GetBestFitness());
 
         // cleanup
         currentGeneration.Cleanup();
  
-        // procreate
-        List<DNA<BasicGene>> dNAs = Procreate(fittestDNAs);
+        // procreate & mutate
+        List<DNA<BasicGene>> newDNAs = ProcreateAndMutate(fittestDNAs);
 
         generationCount++;
 
         // run next generation with procreated dnas
         if (generationCount < numberOfGenerations)
-            StartGeneration(dNAs);
+            StartGeneration(newDNAs);
     }
 
-    List<DNA<BasicGene>> Procreate(List<DNA<BasicGene>> fittestCats)
+    List<DNA<BasicGene>> ProcreateAndMutate(List<DNA<BasicGene>> fittestCats)
     {
-        List<DNA<BasicGene>> procreatedDNAs = new List<DNA<BasicGene>>();
+        List<DNA<BasicGene>> newDNAs = new List<DNA<BasicGene>>();
 
         for (int i = 0; i < catsPerGeneration; i++)
         {
@@ -86,12 +96,15 @@ public class SimulationManager : MonoBehaviour
 
             DNA<BasicGene> dNAParent1 = fittestCats[randomParentIndex1];
             DNA<BasicGene> dNAParent2 = fittestCats[randomParentIndex2];
-            DNA<BasicGene> procreatedDNA = dNAParent1 + dNAParent2;
+            // DNA<BasicGene> newDNA = dNAParent1 + dNAParent2;
+            DNA<BasicGene> newDNA = dNAParent1 * dNAParent2;
 
-            procreatedDNAs.Add(procreatedDNA);
+            newDNA.Mutate(mutationRate);
+
+            newDNAs.Add(newDNA);
         }
 
-        return procreatedDNAs;
+        return newDNAs;
     }
 
 }

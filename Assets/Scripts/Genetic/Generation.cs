@@ -25,8 +25,8 @@ class Generation<G, S> where G : Gene, new() where S : MonoBehaviour, Strategy<G
 
     public void RunGeneration()
     {
-        float xOffset = -0.5f;
-        float zOffset = -0.5f;
+        float xOffset = -0.9f;
+        float zOffset = -0.9f;
         int catsPerRow = 10;
 
         for (int i = 0; i < numberOfCats; i++)
@@ -57,10 +57,15 @@ class Generation<G, S> where G : Gene, new() where S : MonoBehaviour, Strategy<G
 
     public float GetAverageFitness()
     {
-        float averageFitness = cats.OrderBy(c => c.GetFitness()).Take((int)(numberOfCats * survivorKeepPercentage * Mathf.Pow(10, -2))).Select(c => c.GetFitness()).Average();
+        float averageFitness = cats.OrderByDescending(c => c.GetFitness()).Take((int)(numberOfCats * survivorKeepPercentage * Mathf.Pow(10, -2))).Select(c => c.GetFitness()).Average();
         float roundedAverageFitness = (float)(System.Math.Truncate((double)averageFitness * 100.0) / 100.0);
 
         return roundedAverageFitness;
+    }
+
+    public float GetBestFitness()
+    {
+        return cats.OrderByDescending(c => c.GetFitness()).Select(c => c.GetFitness()).First();
     }
 
     public void Cleanup()

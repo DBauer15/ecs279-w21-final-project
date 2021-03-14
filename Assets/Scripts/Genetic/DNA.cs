@@ -21,6 +21,7 @@ public class DNA<G> where G : Gene, new()
 
     }
 
+    // randomly picks between genes of dna a and dna b
     public static DNA<G> operator +(DNA<G> a, DNA<G> b)
     {
         DNA<G> combinedDNA = new DNA<G>();
@@ -32,6 +33,32 @@ public class DNA<G> where G : Gene, new()
         }
 
         return combinedDNA;
+    }
+
+    // takes first half of dna a, second of dna b
+    public static DNA<G> operator *(DNA<G> a, DNA<G> b)
+    {
+        DNA<G> combinedDNA = new DNA<G>();
+
+        for (int i = 0; i < a.genes.Count; i++)
+        {
+            combinedDNA.genes.Add(i < a.genes.Count/2 ? a.genes[i] : b.genes[i]);
+        }
+
+        return combinedDNA;
+    }
+
+    public void Mutate(float mutationRate)
+    {
+        for (int i = 0; i < genes.Count; i++)
+        {
+            float randomValue = Random.Range(0f, 1.0f);
+
+            if(mutationRate > randomValue)
+            {
+                genes[i].Randomize();
+            }
+        }
     }
 
 }

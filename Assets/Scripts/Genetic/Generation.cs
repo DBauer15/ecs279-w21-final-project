@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System;
 using System.Linq;
 
-class Generation<G,S> where G : Gene, new() where S : MonoBehaviour, Strategy<G>
+class Generation<G, S> where G : Gene, new() where S : MonoBehaviour, Strategy<G>
 {
     public UnityEvent generationFinishedEvent;
     int numberOfCats, numberOfJoints, survivorKeepPercentage, spawnHeight;
@@ -25,32 +25,50 @@ class Generation<G,S> where G : Gene, new() where S : MonoBehaviour, Strategy<G>
 
     public void RunGeneration()
     {
-        float xOffset = 2;
+        float xOffset = -0.5f;
+        float zOffset = -0.5f;
+        int catsPerRow = 10;
 
         for (int i = 0; i < numberOfCats; i++)
         {
-            Vector3 spawnPosition = new Vector3(0, spawnHeight, 0 + xOffset * i);
+            float spawnX = (xOffset * (i % catsPerRow))  - xOffset * catsPerRow / 2;
+            float spawnY = spawnHeight;
+            float spawnZ = ((i - i % catsPerRow)/catsPerRow) * zOffset;
+
+            Vector3 spawnPosition = new Vector3(spawnX, spawnY, spawnZ);
             GameObject catGameObject = GameObject.Instantiate(catPrefab, spawnPosition, Quaternion.identity);
             Cat cat = catGameObject.GetComponent<Cat>();
 
             if (dNAs == null)
                 cat.Init<G, S>();
-            else 
+            else
                 cat.Init<G, S>(dNAs[i]);
-            
+
             cats.Add(cat);
         }
     }
 
-    public List<DNA<G>> EvaluateGeneration()
+    public List<DNA<G>> GetFittestDNAs()
     {
-        List<DNA<G>> result = cats.OrderBy(c => c.GetFitness()).Take((int)(cats.Count  * survivorKeepPercentage * 10^-2)).Select(c => c.GetDNA<G>()).ToList();
+        List<DNA<G>> fittestCats = cats.OrderBy(c => c.GetFitness()).Take((int)(numberOfCats * survivorKeepPercentage * Mathf.Pow(10, -2))).Select(c => c.GetDNA<G>()).ToList();
 
-        foreach(Cat cat in cats) {
+        return fittestCats;
+    }
+
+    public float GetAverageFitness()
+    {
+        float averageFitness = cats.OrderBy(c => c.GetFitness()).Take((int)(numberOfCats * survivorKeepPercentage * Mathf.Pow(10, -2))).Select(c => c.GetFitness()).Average();
+        float roundedAverageFitness = (float)(System.Math.Truncate((double)averageFitness * 100.0) / 100.0);
+
+        return roundedAverageFitness;
+    }
+
+    public void Cleanup()
+    {
+        foreach (Cat cat in cats)
+        {
             GameObject.Destroy(cat.gameObject);
         }
-
-        return result;
     }
 
 }

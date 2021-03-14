@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 
+[Serializable]
 public class BasicGene : Gene {
 
     public Vector3 rotation;
@@ -17,10 +19,10 @@ public class BasicGene : Gene {
 
     Vector3 GenerateRandomRotation()
     {
-        return new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f));
+        return new Vector3(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f));
     }
 
     float GenerateRandomSpeed() {
-        return Random.Range(0f, 1f);
+        return UnityEngine.Random.Range(0f, 1f);
     }
 }

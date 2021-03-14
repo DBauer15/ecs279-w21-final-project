@@ -60,6 +60,7 @@ public class SimulationManager : MonoBehaviour
     void CompleteGeneration()
     {
         Generation<BasicGene, BasicStrategy> currentGeneration = generations[generationCount];
+        currentGeneration.SerializeBest();
 
         // get fittest dnas & mean fitness
         List<DNA<BasicGene>> fittestDNAs = currentGeneration.GetFittestDNAs();

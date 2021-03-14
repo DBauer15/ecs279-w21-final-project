@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Cat : MonoBehaviour
 {
+    public static int INSTACE_COUNT = 0;
+
+
     //  joint rotation limits 
     [SerializeField]
     Vector3 backARotationLimits = new Vector3();
@@ -50,7 +53,7 @@ public class Cat : MonoBehaviour
     
 
 
-
+    public int id;
     ConfigurableJoint[] joints;
     Fitness fitness;
     public object dNA;
@@ -73,6 +76,8 @@ public class Cat : MonoBehaviour
         this.strategy = strategy;
 
         this.fitness = gameObject.AddComponent<Fitness>();
+        this.id = INSTACE_COUNT;
+        INSTACE_COUNT += 1;
     }
 
     public DNA<G> GetDNA<G>() where G : Gene, new() 

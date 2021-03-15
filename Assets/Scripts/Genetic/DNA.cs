@@ -50,6 +50,27 @@ public class DNA<G> where G : Gene, new()
         return combinedDNA;
     }
 
+    // randomly matches limbs of both dNAs
+    public static DNA<G> operator /(DNA<G> a, DNA<G> b)
+    {
+        DNA<G> combinedDNA = new DNA<G>();
+
+        foreach (var limb in Util.limbsJoints)
+        {
+            
+        }
+
+        for (int i = 0; i < a.genes.Count; i++)
+        {
+
+
+
+            combinedDNA.genes.Add(i < a.genes.Count/2 ? a.genes[i] : b.genes[i]);
+        }
+
+        return combinedDNA;
+    }
+
     public void Mutate(int mutationRate)
     {
         for (int i = 0; i < genes.Count; i++)

@@ -192,8 +192,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: House_cat
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 268034216692383893, guid: e07c92d6cdf23184683205ac9e5e1fd0, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e07c92d6cdf23184683205ac9e5e1fd0, type: 3}
 --- !u!1 &35896890 stripped
 GameObject:
@@ -214,7 +213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeScale: 1
-  catFile: 
+  catFile: gen0_cat43_fit15.41032
   geneType: BasicGene
   strategyType: BasicStrategy
 --- !u!1 &177311044

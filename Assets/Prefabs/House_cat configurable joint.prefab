@@ -162,7 +162,7 @@ ConfigurableJoint:
   m_AngularYMotion: 1
   m_AngularZMotion: 1
   m_LinearLimitSpring:
-    spring: 0
+    spring: 1000
     damper: 0
   m_LinearLimit:
     limit: 0
@@ -367,7 +367,7 @@ ConfigurableJoint:
   m_AngularYMotion: 1
   m_AngularZMotion: 1
   m_LinearLimitSpring:
-    spring: 0
+    spring: 1000
     damper: 0
   m_LinearLimit:
     limit: 0
@@ -734,7 +734,7 @@ ConfigurableJoint:
   m_AngularYMotion: 1
   m_AngularZMotion: 1
   m_LinearLimitSpring:
-    spring: 0
+    spring: 1000
     damper: 0
   m_LinearLimit:
     limit: 0
@@ -910,7 +910,7 @@ ConfigurableJoint:
   m_AngularYMotion: 1
   m_AngularZMotion: 1
   m_LinearLimitSpring:
-    spring: 0
+    spring: 1000
     damper: 0
   m_LinearLimit:
     limit: 0
@@ -997,7 +997,7 @@ GameObject:
   - component: {fileID: 268034216132305361}
   - component: {fileID: 268034216692383893}
   m_Layer: 0
-  m_Name: House_cat 1
+  m_Name: House_cat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1127,6 +1127,7 @@ MonoBehaviour:
   backAnkleRRotationLimits: {x: 0, y: 0, z: 0}
   tail0RotationLimits: {x: 0, y: 0, z: 0}
   tail1RotationLimits: {x: 0, y: 0, z: 0}
+  id: 0
 --- !u!114 &268034216692383893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1529,7 +1530,7 @@ ConfigurableJoint:
   m_AngularYMotion: 1
   m_AngularZMotion: 1
   m_LinearLimitSpring:
-    spring: 0
+    spring: 1000
     damper: 0
   m_LinearLimit:
     limit: 0
@@ -1574,7 +1575,7 @@ ConfigurableJoint:
     positionSpring: 0
     positionDamper: 0
     maximumForce: 3.4028233e+38
-  m_TargetRotation: {x: 0, y: 0.24, z: 0, w: 1}
+  m_TargetRotation: {x: 0, y: 0, z: 0, w: 1}
   m_TargetAngularVelocity: {x: 0, y: 0, z: 0}
   m_RotationDriveMode: 0
   m_AngularXDrive:
@@ -1960,7 +1961,7 @@ ConfigurableJoint:
   m_AngularYMotion: 1
   m_AngularZMotion: 1
   m_LinearLimitSpring:
-    spring: 0
+    spring: 1000
     damper: 0
   m_LinearLimit:
     limit: 0
@@ -2196,7 +2197,7 @@ ConfigurableJoint:
   m_AngularYMotion: 1
   m_AngularZMotion: 1
   m_LinearLimitSpring:
-    spring: 0
+    spring: 1000
     damper: 0
   m_LinearLimit:
     limit: 0
@@ -2517,7 +2518,7 @@ ConfigurableJoint:
   m_AngularYMotion: 1
   m_AngularZMotion: 1
   m_LinearLimitSpring:
-    spring: 0
+    spring: 1000
     damper: 0
   m_LinearLimit:
     limit: 0
@@ -2783,7 +2784,7 @@ ConfigurableJoint:
   m_AngularYMotion: 1
   m_AngularZMotion: 1
   m_LinearLimitSpring:
-    spring: 0
+    spring: 1000
     damper: 0
   m_LinearLimit:
     limit: 0
@@ -2988,7 +2989,7 @@ ConfigurableJoint:
   m_AngularYMotion: 1
   m_AngularZMotion: 1
   m_LinearLimitSpring:
-    spring: 0
+    spring: 1000
     damper: 0
   m_LinearLimit:
     limit: 0
@@ -3162,7 +3163,7 @@ ConfigurableJoint:
   m_AngularYMotion: 1
   m_AngularZMotion: 1
   m_LinearLimitSpring:
-    spring: 0
+    spring: 1000
     damper: 0
   m_LinearLimit:
     limit: 0
@@ -3367,7 +3368,7 @@ ConfigurableJoint:
   m_AngularYMotion: 1
   m_AngularZMotion: 1
   m_LinearLimitSpring:
-    spring: 0
+    spring: 1000
     damper: 0
   m_LinearLimit:
     limit: 0
@@ -3571,7 +3572,7 @@ ConfigurableJoint:
   m_AngularYMotion: 1
   m_AngularZMotion: 1
   m_LinearLimitSpring:
-    spring: 0
+    spring: 1000
     damper: 0
   m_LinearLimit:
     limit: 0
@@ -3745,7 +3746,7 @@ ConfigurableJoint:
   m_AngularYMotion: 1
   m_AngularZMotion: 1
   m_LinearLimitSpring:
-    spring: 0
+    spring: 1000
     damper: 0
   m_LinearLimit:
     limit: 0
@@ -4136,7 +4137,7 @@ ConfigurableJoint:
   m_AngularYMotion: 1
   m_AngularZMotion: 1
   m_LinearLimitSpring:
-    spring: 0
+    spring: 1000
     damper: 0
   m_LinearLimit:
     limit: 0
@@ -4371,7 +4372,7 @@ ConfigurableJoint:
   m_AngularYMotion: 1
   m_AngularZMotion: 1
   m_LinearLimitSpring:
-    spring: 0
+    spring: 1000
     damper: 0
   m_LinearLimit:
     limit: 0
@@ -4575,7 +4576,7 @@ ConfigurableJoint:
   m_AngularYMotion: 1
   m_AngularZMotion: 1
   m_LinearLimitSpring:
-    spring: 0
+    spring: 1000
     damper: 0
   m_LinearLimit:
     limit: 0

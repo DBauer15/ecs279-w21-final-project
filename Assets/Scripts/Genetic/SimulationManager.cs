@@ -29,6 +29,8 @@ public class SimulationManager : MonoBehaviour
     Text generationText, fitnessText;
     [SerializeField]
     int spawnHeight = 2;
+    [SerializeField]
+    SimulationConfig simulationConfig;
     
 
     Simulation<BasicGene, BasicStrategyContinuousLimits, RandomProcreation<BasicGene>> simulation;
@@ -43,7 +45,8 @@ public class SimulationManager : MonoBehaviour
             mutationRate,
             survivorKeepPercentage,
             autoProcreation,
-            spawnHeight
+            spawnHeight,
+            simulationConfig.config
         );
 
         StartCoroutine("RunSimulation");

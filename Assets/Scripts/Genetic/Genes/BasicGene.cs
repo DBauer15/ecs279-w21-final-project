@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
@@ -8,7 +9,8 @@ public class BasicGene : Gene {
     public Vector3 rotation;
     public float rotationTime;
 
-    public BasicGene() {
+    public void Init(Dictionary<string, object> config)
+    {
         Randomize();
     }
 

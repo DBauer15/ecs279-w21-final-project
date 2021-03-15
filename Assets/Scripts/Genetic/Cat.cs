@@ -60,10 +60,10 @@ public class Cat : MonoBehaviour
     public object strategy;
 
 
-    public void Init<G,S>() where G : Gene, new() where S : MonoBehaviour, Strategy<G>
+    public void Init<G,S>(Dictionary<string, object> config) where G : Gene, new() where S : MonoBehaviour, Strategy<G>
     {
         this.joints = GetComponentsInChildren<ConfigurableJoint>();
-        DNA<G> dNA = new DNA<G>(joints.Length);
+        DNA<G> dNA = new DNA<G>(config);
         Init<G,S>(dNA);
     }
 

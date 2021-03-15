@@ -7,6 +7,8 @@ public class CatPlayer : MonoBehaviour
 {
     [Range(0.5f, 10f)]
     public float timeScale = 1f;
+    [SerializeField]
+    SimulationConfig simulationConfig;
 
     public string catFile;
 
@@ -19,7 +21,7 @@ public class CatPlayer : MonoBehaviour
             GetComponent<Cat>().Init<BasicGene, BasicStrategyContinuous>(dna);
         } else { 
             Debug.Log("Generating random cat");
-            GetComponent<Cat>().Init<BasicGene, BasicStrategyContinuous>();
+            GetComponent<Cat>().Init<BasicGene,BasicStrategyContinuous>(simulationConfig.config);
         }
     }
 

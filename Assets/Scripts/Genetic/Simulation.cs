@@ -12,6 +12,7 @@ class Simulation <G,S,P> where G : Gene, new() where S : MonoBehaviour, Strategy
     int survivorKeepPercentage;
     bool autoProcreation;
     int spawnHeight;
+    Dictionary<string, object> config;
 
     public P procreation;
     public List<Generation<G,S>> generations;
@@ -20,7 +21,7 @@ class Simulation <G,S,P> where G : Gene, new() where S : MonoBehaviour, Strategy
 
     public List<DNA<G>> dNAs;
 
-    public Simulation(GameObject catPrefab, int generationSize, int survivorCutoffPercentage, int mutationChance, int mutationRate, int survivorKeepPercentage, bool autoProcreation, int spawnHeight) {
+    public Simulation(GameObject catPrefab, int generationSize, int survivorCutoffPercentage, int mutationChance, int mutationRate, int survivorKeepPercentage, bool autoProcreation, int spawnHeight, Dictionary<string, object> config) {
 
         this.catPrefab = catPrefab;
         this.generationSize = generationSize;
@@ -30,6 +31,7 @@ class Simulation <G,S,P> where G : Gene, new() where S : MonoBehaviour, Strategy
         this.survivorKeepPercentage = survivorKeepPercentage;
         this.autoProcreation = autoProcreation;
         this.spawnHeight = spawnHeight;
+        this.config = config;
 
         procreation = new P();
         generations = new List<Generation<G, S>>();
@@ -37,7 +39,7 @@ class Simulation <G,S,P> where G : Gene, new() where S : MonoBehaviour, Strategy
 
     public void StartGeneration()
     {
-        Generation<G, S> generation = new Generation<G, S>(catPrefab, generationSize, survivorCutoffPercentage, spawnHeight, dNAs);
+        Generation<G, S> generation = new Generation<G, S>(catPrefab, generationSize, survivorCutoffPercentage, spawnHeight, config, dNAs);
         generation.RunGeneration();
         generations.Add(generation);
     }

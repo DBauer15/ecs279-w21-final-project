@@ -12,7 +12,7 @@ public class SimulationConfig : MonoBehaviour
    
 
     // Use this for initialization
-    void Start()
+    void Awake()
     {
         config = new Dictionary<string, object>()
         {

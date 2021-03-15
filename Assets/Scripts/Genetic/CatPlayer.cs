@@ -21,7 +21,7 @@ public class CatPlayer : MonoBehaviour
             GetComponent<Cat>().Init<BasicGene, BasicStrategyContinuous>(dna);
         } else { 
             Debug.Log("Generating random cat");
-            GetComponent<Cat>().Init<BasicGene,BasicStrategy>(simulationConfig.config);
+            GetComponent<Cat>().Init<BasicGene,BasicStrategyContinuous>(simulationConfig.config);
         }
     }
 

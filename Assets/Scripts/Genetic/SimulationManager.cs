@@ -45,7 +45,8 @@ public class SimulationManager : MonoBehaviour
             mutationRate,
             survivorKeepPercentage,
             autoProcreation,
-            spawnHeight
+            spawnHeight,
+            simulationConfig.config
         );
 
         StartCoroutine("RunSimulation");

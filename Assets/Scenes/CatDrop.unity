@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2035111234}
-  m_IndirectSpecularColor: {r: 131.16846, g: 162.5249, b: 215.10962, a: 1}
+  m_IndirectSpecularColor: {r: 112.02814, g: 143.259, b: 195.02274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -434,6 +434,7 @@ GameObject:
   m_Component:
   - component: {fileID: 594114498}
   - component: {fileID: 594114497}
+  - component: {fileID: 594114499}
   m_Layer: 0
   m_Name: SimulationManager
   m_TagString: Untagged
@@ -455,7 +456,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeScale: 1
   numberOfGenerations: 2000
-  catsPerGeneration: 100
+  generationSize: 50
   survivorKeepPercentage: 10
   survivorCutoffPercentage: 30
   mutationRate: 30
@@ -466,6 +467,7 @@ MonoBehaviour:
   generationText: {fileID: 1856768836}
   fitnessText: {fileID: 993009719}
   spawnHeight: 1
+  simulationConfig: {fileID: 594114499}
 --- !u!4 &594114498
 Transform:
   m_ObjectHideFlags: 0
@@ -480,6 +482,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &594114499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 594114496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b861f1d7d6f54c77a29feecfb75708b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberOfJoints: 18
+  numberOfGenes: 18
 --- !u!1 &613782874
 GameObject:
   m_ObjectHideFlags: 19

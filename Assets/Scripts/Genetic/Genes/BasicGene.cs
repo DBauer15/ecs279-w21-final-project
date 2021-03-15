@@ -5,6 +5,7 @@ using UnityEngine;
 [Serializable]
 public class BasicGene : Gene {
 
+    public string jointName;
     public Vector3 rotation;
     public float rotationTime;
 

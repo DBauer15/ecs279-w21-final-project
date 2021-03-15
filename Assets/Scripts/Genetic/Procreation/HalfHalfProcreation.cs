@@ -9,7 +9,6 @@ class HalfHalfProcreation<G> : Procreation<G> where G : Gene, new()
 
         int survivorKeep = Mathf.RoundToInt(survivorKeepPercentage * Mathf.Pow(10, -2) * generationSize);
         
-        Debug.Log($"{fittest.Count}, {survivorKeep}");
         // add survivors
         for (int i = 0; i < survivorKeep; i++)
         {

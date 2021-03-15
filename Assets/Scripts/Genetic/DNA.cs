@@ -18,9 +18,9 @@ public class DNA<G> where G : Gene, new()
 
         for (int i = 0; i < (int)config["numberOfGenes"]; i++)
         {
-            Gene gene = new G();
+            G gene = new G();
             gene.Init(config);
-            genes.Add(new G());
+            genes.Add(gene);
         }
 
     }

@@ -495,7 +495,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberOfJoints: 18
-  numberOfGenes: 18
+  numberOfGenes: 5
 --- !u!1 &613782874
 GameObject:
   m_ObjectHideFlags: 19

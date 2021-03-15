@@ -11,11 +11,13 @@ public class KeyframeGene : Gene {
     public void Init(Dictionary<string, object> config)
     {
         numberOfJoints = (int)config["numberOfJoints"];
+        rotations = new List<Vector3>();
+
         Randomize();
     }
 
     public void Randomize() {
-        rotations = new List<Vector3>();
+        rotations.Clear();
         for (int i = 0; i < numberOfJoints; i++)
         {
             rotations.Add(GenerateRandomRotation());

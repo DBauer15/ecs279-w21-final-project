@@ -12,12 +12,14 @@ public class DNA<G> where G : Gene, new()
         genes = new List<G>();
     }
 
-    public DNA(int numberOfJoints)
+    public DNA(Dictionary<string, object> config)
     {
         genes = new List<G>();
 
-        for (int i = 0; i < numberOfJoints; i++)
+        for (int i = 0; i < (int)config["numberOfGenes"]; i++)
         {
+            Gene gene = new G();
+            gene.Init(config);
             genes.Add(new G());
         }
 

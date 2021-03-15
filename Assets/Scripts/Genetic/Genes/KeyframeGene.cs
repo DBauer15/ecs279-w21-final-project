@@ -3,28 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class BasicGene : Gene {
+public class KeyframeGene : Gene {
 
-    public Vector3 rotation;
-    public float speed;
+    int numberOfJoints;
+    public List<Vector3> rotations;
 
     public void Init(Dictionary<string, object> config)
     {
+        numberOfJoints = (int)config["numberOfJoints"];
         Randomize();
     }
 
     public void Randomize() {
-        rotation = GenerateRandomRotation();
-        speed = GenerateRandomSpeed();
-        speed = 1.0f;
+        rotations = new List<Vector3>();
+        for (int i = 0; i < numberOfJoints; i++)
+        {
+            rotations.Add(GenerateRandomRotation());
+        }
     }
 
     Vector3 GenerateRandomRotation()
     {
         return new Vector3(UnityEngine.Random.Range(-360f, 360f), UnityEngine.Random.Range(-360f, 360f), UnityEngine.Random.Range(-360f, 360f));
-    }
-
-    float GenerateRandomSpeed() {
-        return UnityEngine.Random.Range(0f, 1f);
     }
 }

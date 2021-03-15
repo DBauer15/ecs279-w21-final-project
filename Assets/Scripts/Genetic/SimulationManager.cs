@@ -28,6 +28,10 @@ public class SimulationManager : MonoBehaviour
     Text generationText, fitnessText;
     [SerializeField]
     int spawnHeight = 2;
+    [SerializeField]
+    SimulationConfig simulationConfig;
+
+
     int generationCount;
     float generationMeanFitness, generationBestFitness = 0;
     
@@ -56,7 +60,7 @@ public class SimulationManager : MonoBehaviour
 
     void StartGeneration(List<DNA<BasicGene>> dNAs = null)
     {
-        Generation<BasicGene, BasicStrategy> generation = new Generation<BasicGene, BasicStrategy>(catPrefab, catsPerGeneration, survivorCutoffPercentage, spawnHeight, dNAs);
+        Generation<BasicGene, BasicStrategy> generation = new Generation<BasicGene, BasicStrategy>(catPrefab, catsPerGeneration, survivorCutoffPercentage, spawnHeight, simulationConfig.config, dNAs);
         generation.RunGeneration();
         generations.Add(generation);
 

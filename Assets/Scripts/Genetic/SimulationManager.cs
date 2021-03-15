@@ -12,7 +12,7 @@ public class SimulationManager : MonoBehaviour
     [SerializeField]
     int numberOfGenerations = 10;
     [SerializeField]
-    int catsPerGeneration = 50;
+    int generationSize = 50;
     [SerializeField]
     int survivorKeepPercentage = 5;
     [SerializeField]
@@ -31,13 +31,13 @@ public class SimulationManager : MonoBehaviour
     int spawnHeight = 2;
     
 
-    Simulation<BasicGene, BasicStrategyContinuousLimits> simulation;
+    Simulation<BasicGene, BasicStrategyContinuousLimits, RandomProcreation<BasicGene>> simulation;
 
     void Start()
     {
-        simulation = new Simulation<BasicGene, BasicStrategyContinuousLimits>(
+        simulation = new Simulation<BasicGene, BasicStrategyContinuousLimits, RandomProcreation<BasicGene>>(
             catPrefab,
-            catsPerGeneration,
+            generationSize,
             survivorCutoffPercentage,
             mutationChance,
             mutationRate,

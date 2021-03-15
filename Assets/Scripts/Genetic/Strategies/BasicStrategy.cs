@@ -15,7 +15,7 @@ public class BasicStrategy : MonoBehaviour, Strategy<BasicGene>
 
         for (int i = 0; i < joints.Length; i++)
         {
-            // UpdateJoint(dNA.genes[i], joints[i]);
+            UpdateJoint(dNA.genes[i], joints[i]);
         }
     }
 
@@ -23,11 +23,6 @@ public class BasicStrategy : MonoBehaviour, Strategy<BasicGene>
     {
         if (dNA == null || joints == null)
             return;
-
-        // for (int i = 0; i < joints.Length; i++)
-        // {
-        //     UpdateJoint(dNA.genes[i], joints[i]);
-        // }
     }
 
 

@@ -12,17 +12,17 @@ public class BasicStrategy : MonoBehaviour, Strategy<BasicGene>
     {
         this.dNA = dNA;
         this.joints = joints;
+
+        for (int i = 0; i < joints.Length; i++)
+        {
+            UpdateJoint(dNA.genes[i], joints[i]);
+        }
     }
 
     void Update()
     {
         if (dNA == null || joints == null)
             return;
-
-        for (int i = 0; i < joints.Length; i++)
-        {
-            UpdateJoint(dNA.genes[i], joints[i]);
-        }
     }
 
 

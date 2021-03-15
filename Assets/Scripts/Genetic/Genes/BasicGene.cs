@@ -19,7 +19,7 @@ public class BasicGene : Gene {
 
     Vector3 GenerateRandomRotation()
     {
-        return new Vector3(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f));
+        return new Vector3(UnityEngine.Random.Range(-360f, 360f), UnityEngine.Random.Range(-360f, 360f), UnityEngine.Random.Range(-360f, 360f));
     }
 
     float GenerateRandomSpeed() {

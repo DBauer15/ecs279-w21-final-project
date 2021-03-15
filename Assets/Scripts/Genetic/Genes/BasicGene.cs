@@ -5,7 +5,7 @@ using UnityEngine;
 public class BasicGene : Gene {
 
     public Vector3 rotation;
-    public float speed;
+    public float rotationTime;
 
     public BasicGene() {
         Randomize();
@@ -13,13 +13,13 @@ public class BasicGene : Gene {
 
     public void Randomize() {
         rotation = GenerateRandomRotation();
-        speed = GenerateRandomSpeed();
-        speed = 1.0f;
+        rotationTime = GenerateRandomSpeed();
+        rotationTime = 3000f; // TODO: not hardcode?
     }
 
     Vector3 GenerateRandomRotation()
     {
-        return new Vector3(UnityEngine.Random.Range(-360f, 360f), UnityEngine.Random.Range(-360f, 360f), UnityEngine.Random.Range(-360f, 360f));
+        return new Vector3(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f));
     }
 
     float GenerateRandomSpeed() {

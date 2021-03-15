@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicStrategy : MonoBehaviour, Strategy<BasicGene>
+public class BasicStrategyOnce : MonoBehaviour, Strategy<BasicGene>
 {
 
     public DNA<BasicGene> dNA;
@@ -15,7 +15,7 @@ public class BasicStrategy : MonoBehaviour, Strategy<BasicGene>
 
         for (int i = 0; i < joints.Length; i++)
         {
-            UpdateJointOnceNoLimits(dNA.genes[i], joints[i]);
+            UpdateJoints(dNA.genes[i], joints[i]);
         }
     }
 

@@ -2,20 +2,27 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicStrategy : MonoBehaviour, Strategy<BasicGene>
+public class BasicStrategyContinuous : MonoBehaviour, Strategy<BasicGene>
 {
 
     public DNA<BasicGene> dNA;
     public ConfigurableJoint[] joints;
     float totalTime;
+    List<Quaternion> initialRotations;
 
     public void Init(DNA<BasicGene> dNA, ConfigurableJoint[] joints)
     {
         this.dNA = dNA;
         this.joints = joints;
+
+        initialRotations = new List<Quaternion>();
+        foreach (ConfigurableJoint joint in joints)
+        {
+            initialRotations.Add(joint.transform.localRotation);
+        }
     }
 
-    void FixedUpdate()
+    void Update()
     {
         totalTime += Time.deltaTime;
 
@@ -24,28 +31,22 @@ public class BasicStrategy : MonoBehaviour, Strategy<BasicGene>
 
         for (int i = 0; i < joints.Length; i++)
         {
-            UpdateJoints(dNA.genes[i], joints[i]);
+            UpdateJoints(dNA.genes[i], joints[i], initialRotations[i]);
         }
     }
 
-    void UpdateJoints(BasicGene gene, ConfigurableJoint joint)
+    void UpdateJoints(BasicGene gene, ConfigurableJoint joint, Quaternion initialRotation)
     {
         if(totalTime > gene.rotationTime)
             return;
 
-        Quaternion currentRotation = joint.transform.localRotation;
-        
-        Quaternion partialRotation = Quaternion.Euler(
-            // assuming low and high x limit is the same
-            gene.rotation.x * 360 * Time.deltaTime / gene.rotationTime,
-            gene.rotation.y * 360 * Time.deltaTime / gene.rotationTime,
-            gene.rotation.z * 360 * Time.deltaTime / gene.rotationTime
-        );
 
-        if(joint.gameObject.name == "CatGirl2:Chest_M")
-            Debug.Log("Rotating joint " + joint + " by " + partialRotation.eulerAngles + " total rot " + new Vector3(gene.rotation.x * 360, gene.rotation.y * 360, gene.rotation.z * 360));
+        float t = totalTime / gene.rotationTime;
+        Quaternion target = Quaternion.Euler((gene.rotation * 360.0f) + initialRotation.eulerAngles);
 
-        joint.SetTargetRotationLocal(partialRotation, currentRotation);
+        Quaternion rotation = Quaternion.Lerp(initialRotation, target, t);
+
+        joint.SetTargetRotationLocal(rotation, initialRotation);
     }
 
 }

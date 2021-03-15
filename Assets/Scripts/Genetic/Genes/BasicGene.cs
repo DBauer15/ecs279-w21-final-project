@@ -14,7 +14,6 @@ public class BasicGene : Gene {
     public void Randomize() {
         rotation = GenerateRandomRotation();
         rotationTime = GenerateRandomSpeed();
-        rotationTime = 3000f; // TODO: not hardcode?
     }
 
     Vector3 GenerateRandomRotation()
@@ -23,6 +22,6 @@ public class BasicGene : Gene {
     }
 
     float GenerateRandomSpeed() {
-        return UnityEngine.Random.Range(0f, 1f);
+        return UnityEngine.Random.Range(0.1f, 2f);
     }
 }

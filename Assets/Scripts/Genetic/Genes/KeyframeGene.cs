@@ -5,10 +5,10 @@ using UnityEngine;
 [Serializable]
 public class KeyframeGene : Gene {
 
-    int numberOfJoints;
+    protected int numberOfJoints;
     public List<Vector3> rotations;
 
-    public void Init(Dictionary<string, object> config)
+    public void Init(int id, Dictionary<string, object> config)
     {
         numberOfJoints = (int)config["numberOfJoints"];
         rotations = new List<Vector3>();
@@ -27,5 +27,15 @@ public class KeyframeGene : Gene {
     Vector3 GenerateRandomRotation()
     {
         return new Vector3(UnityEngine.Random.Range(-360f, 360f), UnityEngine.Random.Range(-360f, 360f), UnityEngine.Random.Range(-360f, 360f));
+    }
+
+    public object Clone()
+    {
+        KeyframeGene clone = new KeyframeGene();
+        clone.numberOfJoints = numberOfJoints;
+        clone.rotations = new List<Vector3>();
+        clone.rotations.AddRange(rotations);
+
+        return clone;
     }
 }

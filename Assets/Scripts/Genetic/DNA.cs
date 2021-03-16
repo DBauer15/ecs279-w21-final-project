@@ -19,7 +19,7 @@ public class DNA<G> where G : Gene, new()
         for (int i = 0; i < (int)config["numberOfGenes"]; i++)
         {
             G gene = new G();
-            gene.Init(config);
+            gene.Init(i, config);
             genes.Add(gene);
         }
 
@@ -46,27 +46,6 @@ public class DNA<G> where G : Gene, new()
 
         for (int i = 0; i < a.genes.Count; i++)
         {
-            combinedDNA.genes.Add(i < a.genes.Count/2 ? a.genes[i] : b.genes[i]);
-        }
-
-        return combinedDNA;
-    }
-
-    // randomly matches limbs of both dNAs
-    public static DNA<G> operator /(DNA<G> a, DNA<G> b)
-    {
-        DNA<G> combinedDNA = new DNA<G>();
-
-        foreach (var limb in Util.limbsJoints)
-        {
-            
-        }
-
-        for (int i = 0; i < a.genes.Count; i++)
-        {
-
-
-
             combinedDNA.genes.Add(i < a.genes.Count/2 ? a.genes[i] : b.genes[i]);
         }
 

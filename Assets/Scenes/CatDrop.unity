@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2035111234}
-  m_IndirectSpecularColor: {r: 112.02814, g: 143.259, b: 195.02274, a: 1}
+  m_IndirectSpecularColor: {r: 131.16846, g: 162.5249, b: 215.10962, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -459,8 +459,8 @@ MonoBehaviour:
   generationSize: 50
   survivorKeepPercentage: 10
   survivorCutoffPercentage: 30
-  mutationRate: 30
-  mutationChance: 10
+  mutationRate: 100
+  mutationChance: 0
   autoProcreation: 0
   catPrefab: {fileID: 185677593155355283, guid: f110edaa45f923a4592c9eac98735f24,
     type: 3}

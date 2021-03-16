@@ -1,8 +1,9 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface Gene {
-
-    void Init(Dictionary<string, object> config);
+public interface Gene : ICloneable
+{
+    void Init(int id, Dictionary<string, object> config);
     void Randomize();
 }

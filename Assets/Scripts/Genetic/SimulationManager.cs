@@ -32,11 +32,11 @@ public class SimulationManager : MonoBehaviour
     SimulationConfig simulationConfig;
     
 
-    Simulation<KeyframeGene, KeyframeStrategy, RandomProcreation<KeyframeGene>> simulation;
+    Simulation<LimbGene, LimbStrategy, RandomProcreation<LimbGene>> simulation;
 
     void Start()
     {
-        simulation = new Simulation<KeyframeGene, KeyframeStrategy, RandomProcreation<KeyframeGene>>(
+        simulation = new Simulation<LimbGene, LimbStrategy, RandomProcreation<LimbGene>>(
             catPrefab,
             generationSize,
             survivorCutoffPercentage,

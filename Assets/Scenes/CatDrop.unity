@@ -456,11 +456,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeScale: 1
   numberOfGenerations: 2000
-  generationSize: 50
+  generationSize: 100
   survivorKeepPercentage: 10
   survivorCutoffPercentage: 30
-  mutationRate: 100
-  mutationChance: 0
+  mutationRate: 50
+  mutationChance: 20
   autoProcreation: 0
   catPrefab: {fileID: 185677593155355283, guid: f110edaa45f923a4592c9eac98735f24,
     type: 3}

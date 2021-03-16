@@ -4,7 +4,6 @@ using UnityEngine;
 
 [Serializable]
 public class BasicGene : Gene {
-
     public string jointName;
     public string limbName;
     public Vector3 rotation;
@@ -36,7 +35,7 @@ public class BasicGene : Gene {
         BasicGene clone = new BasicGene();
         clone.jointName = jointName;
         clone.limbName = limbName;
-        clone.rotation = rotation;
+        clone.rotation = new Vector3(rotation.x, rotation.y, rotation.z);
         clone.rotationTime = rotationTime;
 
         return clone;

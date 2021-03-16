@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Linq;
 using System.Collections;
 
 public class SimulationManager : MonoBehaviour
@@ -33,11 +32,11 @@ public class SimulationManager : MonoBehaviour
     SimulationConfig simulationConfig;
     
 
-    Simulation<BasicGene, BasicStrategyContinuousLimits, RandomProcreation<BasicGene>> simulation;
+    Simulation<BasicGene, BasicStrategyContinuousLimits, LimbProcreation<BasicGene>> simulation;
 
     void Start()
     {
-        simulation = new Simulation<BasicGene, BasicStrategyContinuousLimits, RandomProcreation<BasicGene>>(
+        simulation = new Simulation<BasicGene, BasicStrategyContinuousLimits, LimbProcreation<BasicGene>>(
             catPrefab,
             generationSize,
             survivorCutoffPercentage,

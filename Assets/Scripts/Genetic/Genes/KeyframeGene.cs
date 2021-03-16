@@ -34,7 +34,9 @@ public class KeyframeGene : Gene {
         KeyframeGene clone = new KeyframeGene();
         clone.numberOfJoints = numberOfJoints;
         clone.rotations = new List<Vector3>();
-        clone.rotations.AddRange(rotations);
+        foreach (Vector3 rotation in rotations) {
+            clone.rotations.Add(new Vector3(rotation.x, rotation.y, rotation.z));
+        }
 
         return clone;
     }

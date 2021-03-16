@@ -33,7 +33,7 @@ public class DNA<G> where G : Gene, new()
         for (int i = 0; i < a.genes.Count; i++)
         {
             int rand = UnityEngine.Random.Range(0, 2);
-            combinedDNA.genes.Add(rand == 0 ? a.genes[i] : b.genes[i]);
+            combinedDNA.genes.Add(rand == 0 ? (G)a.genes[i].Clone() : (G)b.genes[i].Clone());
         }
 
         return combinedDNA;
@@ -46,7 +46,7 @@ public class DNA<G> where G : Gene, new()
 
         for (int i = 0; i < a.genes.Count; i++)
         {
-            combinedDNA.genes.Add(i < a.genes.Count/2 ? a.genes[i] : b.genes[i]);
+            combinedDNA.genes.Add(i < a.genes.Count/2 ? (G)a.genes[i].Clone() : (G)b.genes[i].Clone());
         }
 
         return combinedDNA;

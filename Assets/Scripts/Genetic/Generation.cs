@@ -47,6 +47,8 @@ class Generation<G, S> where G : Gene, new() where S : MonoBehaviour, Strategy<G
             GameObject catGameObject = GameObject.Instantiate(catPrefab, spawnPosition, Quaternion.identity);
             Cat cat = catGameObject.GetComponent<Cat>();
 
+            
+
             if (dNAs == null)
                 cat.Init<G, S>(catConfig);
             else

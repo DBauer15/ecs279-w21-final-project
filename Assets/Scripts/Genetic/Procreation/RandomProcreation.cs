@@ -5,6 +5,7 @@ class RandomProcreation<G> : Procreation<G> where G : Gene, new()
 {
 
     public List<DNA<G>> BuildNextGeneration(List<DNA<G>> fittest, int generationSize, int survivorKeepPercentage, int mutationChance, int mutationRate, bool autoProcreation) {
+        
         List<DNA<G>> newDNAs = new List<DNA<G>>();
 
         int survivorKeep = Mathf.RoundToInt(survivorKeepPercentage * Mathf.Pow(10, -2) * generationSize);

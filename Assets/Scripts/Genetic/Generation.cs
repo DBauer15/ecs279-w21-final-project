@@ -12,10 +12,11 @@ class Generation<G, S> where G : Gene, new() where S : MonoBehaviour, Strategy<G
     public UnityEvent generationFinishedEvent;
     int numberOfCats, numberOfJoints, survivorCutoffPercentage, spawnHeight;
     GameObject catPrefab;
+    Dictionary<string, object> catConfig;
     List<Cat> cats;
     List<DNA<G>> dNAs;
 
-    public Generation(GameObject catPrefab, int numberOfCats, int survivorCutoffPercentage, int spawnHeight, List<DNA<G>> dNAs = null)
+    public Generation(GameObject catPrefab, int numberOfCats, int survivorCutoffPercentage, int spawnHeight, Dictionary<string, object> catConfig, List<DNA<G>> dNAs = null)
     {
         generationFinishedEvent = new UnityEvent();
         this.catPrefab = catPrefab;
@@ -23,6 +24,7 @@ class Generation<G, S> where G : Gene, new() where S : MonoBehaviour, Strategy<G
         this.survivorCutoffPercentage = survivorCutoffPercentage;
         this.spawnHeight = spawnHeight;
         this.cats = new List<Cat>();
+        this.catConfig = catConfig;
         this.dNAs = dNAs;
         this.id = INSTACE_COUNT;
         INSTACE_COUNT += 1;
@@ -45,8 +47,10 @@ class Generation<G, S> where G : Gene, new() where S : MonoBehaviour, Strategy<G
             GameObject catGameObject = GameObject.Instantiate(catPrefab, spawnPosition, Quaternion.identity);
             Cat cat = catGameObject.GetComponent<Cat>();
 
+            
+
             if (dNAs == null)
-                cat.Init<G, S>();
+                cat.Init<G, S>(catConfig);
             else
                 cat.Init<G, S>(dNAs[i]);
 

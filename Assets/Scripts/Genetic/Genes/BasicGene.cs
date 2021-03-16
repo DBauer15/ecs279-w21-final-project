@@ -1,20 +1,24 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
 public class BasicGene : Gene {
-
+    public string jointName;
+    public string limbName;
     public Vector3 rotation;
-    public float speed;
+    public float rotationTime;
 
-    public BasicGene() {
+    public void Init(int id, Dictionary<string, object> config)
+    {
+        jointName = ((string[])config["joints"])[id];
+        limbName = ((string[])config["limbs"])[id];
         Randomize();
     }
 
     public void Randomize() {
         rotation = GenerateRandomRotation();
-        speed = GenerateRandomSpeed();
-        speed = 1.0f;
+        rotationTime = GenerateRandomSpeed();
     }
 
     Vector3 GenerateRandomRotation()
@@ -23,6 +27,17 @@ public class BasicGene : Gene {
     }
 
     float GenerateRandomSpeed() {
-        return UnityEngine.Random.Range(0f, 1f);
+        return UnityEngine.Random.Range(0.1f, 2f);
+    }
+
+    public object Clone()
+    {
+        BasicGene clone = new BasicGene();
+        clone.jointName = jointName;
+        clone.limbName = limbName;
+        clone.rotation = new Vector3(rotation.x, rotation.y, rotation.z);
+        clone.rotationTime = rotationTime;
+
+        return clone;
     }
 }

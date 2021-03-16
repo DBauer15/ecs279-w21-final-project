@@ -435,6 +435,7 @@ GameObject:
   - component: {fileID: 594114498}
   - component: {fileID: 594114497}
   - component: {fileID: 594114499}
+  - component: {fileID: 594114500}
   m_Layer: 0
   m_Name: SimulationManager
   m_TagString: Untagged
@@ -455,19 +456,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeScale: 0.5
-  numberOfGenerations: 2000
+  numberOfGenerations: 500
   generationSize: 100
   survivorKeepPercentage: 10
   survivorCutoffPercentage: 30
   mutationRate: 30
   mutationChance: 10
-  autoProcreation: 0
+  autoProcreation: 1
   catPrefab: {fileID: 185677593155355283, guid: f110edaa45f923a4592c9eac98735f24,
     type: 3}
   generationText: {fileID: 1856768836}
   fitnessText: {fileID: 993009719}
   spawnHeight: 1
   simulationConfig: {fileID: 594114499}
+  simulationLogger: {fileID: 594114500}
 --- !u!4 &594114498
 Transform:
   m_ObjectHideFlags: 0
@@ -496,6 +498,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberOfJoints: 18
   numberOfGenes: 7
+--- !u!114 &594114500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 594114496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 907eb14bb010d4915bb962b0c24b0c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fileName: testlog
 --- !u!1 &613782874
 GameObject:
   m_ObjectHideFlags: 19
@@ -1070,7 +1085,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.1
   far clip plane: 1000
   field of view: 67.380135
   orthographic: 0
@@ -1943,6 +1958,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 185677593155355293, guid: f110edaa45f923a4592c9eac98735f24,
+        type: 3}
+      propertyPath: boneSize
+      value: 1.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 185677593155355293, guid: f110edaa45f923a4592c9eac98735f24,
+        type: 3}
+      propertyPath: boneShape
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 185677593155355293, guid: f110edaa45f923a4592c9eac98735f24,
+        type: 3}
+      propertyPath: drawBones
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 185677593155355293, guid: f110edaa45f923a4592c9eac98735f24,
+        type: 3}
+      propertyPath: boneColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 185677593155355293, guid: f110edaa45f923a4592c9eac98735f24,
+        type: 3}
+      propertyPath: boneColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 185677593155355293, guid: f110edaa45f923a4592c9eac98735f24,
+        type: 3}
+      propertyPath: boneColor.r
+      value: 0.06812096
       objectReference: {fileID: 0}
     - target: {fileID: 185677593173835177, guid: f110edaa45f923a4592c9eac98735f24,
         type: 3}
@@ -4167,22 +4212,22 @@ PrefabInstance:
     - target: {fileID: 185677595123073136, guid: f110edaa45f923a4592c9eac98735f24,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.9877999
+      value: -0.9993438
       objectReference: {fileID: 0}
     - target: {fileID: 185677595123073136, guid: f110edaa45f923a4592c9eac98735f24,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.12599199
+      value: 0.0000000034140477
       objectReference: {fileID: 0}
     - target: {fileID: 185677595123073136, guid: f110edaa45f923a4592c9eac98735f24,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.011580435
+      value: -1.1571741e-10
       objectReference: {fileID: 0}
     - target: {fileID: 185677595123073136, guid: f110edaa45f923a4592c9eac98735f24,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.09079224
+      value: -0.036222816
       objectReference: {fileID: 0}
     - target: {fileID: 185677595123073136, guid: f110edaa45f923a4592c9eac98735f24,
         type: 3}

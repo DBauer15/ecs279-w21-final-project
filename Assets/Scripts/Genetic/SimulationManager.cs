@@ -30,6 +30,8 @@ public class SimulationManager : MonoBehaviour
     int spawnHeight = 2;
     [SerializeField]
     SimulationConfig simulationConfig;
+    [SerializeField]
+    SimulationLogger simulationLogger;
     
 
     Simulation<LimbGene, LimbStrategy, RandomProcreation<LimbGene>> simulation;
@@ -64,6 +66,9 @@ public class SimulationManager : MonoBehaviour
             simulation.StartGeneration();
             yield return new WaitForSeconds(5f);
             simulation.CompleteGeneration();
+
+            // Log Results
+            simulationLogger.Log(simulation.generationCount, simulation.generationWorstFitness, simulation.generationBestFitness, simulation.generationMeanFitness, simulation.generationMedianFitness);
 
             // Update UI
             generationText.text = ("Generation " + simulation.generationCount);

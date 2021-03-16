@@ -17,7 +17,7 @@ class Simulation <G,S,P> where G : Gene, new() where S : MonoBehaviour, Strategy
     public P procreation;
     public List<Generation<G,S>> generations;
     public int generationCount;
-    public float generationMeanFitness, generationBestFitness;
+    public float generationWorstFitness, generationMeanFitness, generationBestFitness, generationMedianFitness;
 
     public List<DNA<G>> dNAs;
 
@@ -51,8 +51,10 @@ class Simulation <G,S,P> where G : Gene, new() where S : MonoBehaviour, Strategy
 
         // get fittest dnas & mean fitness
         List<DNA<G>> fittestDNAs = currentGeneration.GetFittestDNAs();
+        generationWorstFitness = currentGeneration.GetWorstFitness();
         generationMeanFitness = currentGeneration.GetAverageFitness();
         generationBestFitness = currentGeneration.GetBestFitness();
+        generationMedianFitness = currentGeneration.GetMedianFitness();
         Debug.Log($"Mean Fit.: {generationMeanFitness}, Best Fit.: {generationBestFitness}");
 
         // cleanup

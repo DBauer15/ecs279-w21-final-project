@@ -65,9 +65,16 @@ class Generation<G, S> where G : Gene, new() where S : MonoBehaviour, Strategy<G
         return fittestCats;
     }
 
+    public float GetWorstFitness()
+    {
+        return cats.OrderBy(c => c.GetFitness()).Select(c => c.GetFitness()).First();
+    }
+
     public float GetAverageFitness()
     {
-        float averageFitness = cats.OrderByDescending(c => c.GetFitness()).Take((int)(numberOfCats * survivorCutoffPercentage * Mathf.Pow(10, -2))).Select(c => c.GetFitness()).Average();
+        //float averageFitness = cats.OrderByDescending(c => c.GetFitness()).Take((int)(numberOfCats * survivorCutoffPercentage * Mathf.Pow(10, -2))).Select(c => c.GetFitness()).Average();
+        float averageFitness = cats.Select(c => c.GetFitness()).Average();
+
         float roundedAverageFitness = (float)(System.Math.Truncate((double)averageFitness * 100.0) / 100.0);
 
         return roundedAverageFitness;
@@ -76,6 +83,13 @@ class Generation<G, S> where G : Gene, new() where S : MonoBehaviour, Strategy<G
     public float GetBestFitness()
     {
         return cats.OrderByDescending(c => c.GetFitness()).Select(c => c.GetFitness()).First();
+    }
+
+    public float GetMedianFitness()
+    {
+        List<float> fitnesses = cats.OrderByDescending(c => c.GetFitness()).Select(c => c.GetFitness()).ToList();
+
+        return fitnesses[(int)(fitnesses.Count / 2)];
     }
 
     public void SerializeBest() {

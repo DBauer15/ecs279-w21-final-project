@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2035111234}
-  m_IndirectSpecularColor: {r: 112.02814, g: 143.259, b: 195.02274, a: 1}
+  m_IndirectSpecularColor: {r: 131.05615, g: 162.33289, b: 214.80518, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -463,11 +463,11 @@ MonoBehaviour:
   mutationRate: 30
   mutationChance: 10
   autoProcreation: 1
-  catPrefab: {fileID: 185677593155355283, guid: 67a9dc741c7fc4fdc94c4d40bac2824c,
+  catPrefab: {fileID: 185677593155355283, guid: 4b903ef73a02b449182c298c21dc7082,
     type: 3}
   generationText: {fileID: 1856768836}
   fitnessText: {fileID: 993009719}
-  spawnHeight: 1
+  spawnHeight: 2
   simulationConfig: {fileID: 594114499}
   simulationLogger: {fileID: 594114500}
 --- !u!4 &594114498

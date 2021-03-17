@@ -47,7 +47,7 @@ class Generation<G, S> where G : Gene, new() where S : MonoBehaviour, Strategy<G
             GameObject catGameObject = GameObject.Instantiate(catPrefab, spawnPosition, Quaternion.identity);
             Cat cat = catGameObject.GetComponent<Cat>();
 
-            
+
 
             if (dNAs == null)
                 cat.Init<G, S>(catConfig);
@@ -95,8 +95,10 @@ class Generation<G, S> where G : Gene, new() where S : MonoBehaviour, Strategy<G
     public void SerializeBest() {
         Serialize(1);
     }
-    public void Serialize(int n = 1) {
-        foreach (Cat cat in cats.OrderByDescending(c => c.GetFitness()).Take(n)) {
+    public void Serialize(int n = 1)
+    {
+        foreach (Cat cat in cats.OrderByDescending(c => c.GetFitness()).Take(n))
+        {
             DNASerializer.ToFile<G>(cat.GetDNA<G>(), $"gen{id}_cat{cat.id}_fit{cat.GetFitness()}");
         }
     }

@@ -34,11 +34,11 @@ public class SimulationManager : MonoBehaviour
     SimulationLogger simulationLogger;
     
 
-    Simulation<LimbGene, LimbStrategy, RandomProcreation<LimbGene>> simulation;
+    Simulation<BasicGene, BasicStrategyContinuous, HalfHalfProcreation<BasicGene>> simulation;
 
     void Start()
     {
-        simulation = new Simulation<LimbGene, LimbStrategy, RandomProcreation<LimbGene>>(
+        simulation = new Simulation<BasicGene, BasicStrategyContinuous, HalfHalfProcreation<BasicGene>>(
             catPrefab,
             generationSize,
             survivorCutoffPercentage,

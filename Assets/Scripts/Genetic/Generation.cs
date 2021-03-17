@@ -60,7 +60,7 @@ class Generation<G, S> where G : Gene, new() where S : MonoBehaviour, Strategy<G
 
     public List<DNA<G>> GetFittestDNAs()
     {
-        List<DNA<G>> fittestCats = cats.OrderBy(c => c.GetFitness()).Take((int)(numberOfCats * survivorCutoffPercentage * Mathf.Pow(10, -2))).Select(c => c.GetDNA<G>()).ToList();
+        List<DNA<G>> fittestCats = cats.OrderByDescending(c => c.GetFitness()).Take((int)(numberOfCats * survivorCutoffPercentage * Mathf.Pow(10, -2))).Select(c => c.GetDNA<G>()).ToList();
 
         return fittestCats;
     }

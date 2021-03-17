@@ -455,7 +455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a4a3a21e56f343a8897706656496a19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeScale: 0.5
+  timeScale: 2.5
   numberOfGenerations: 500
   generationSize: 100
   survivorKeepPercentage: 10
@@ -463,7 +463,7 @@ MonoBehaviour:
   mutationRate: 30
   mutationChance: 10
   autoProcreation: 1
-  catPrefab: {fileID: 185677593155355283, guid: f110edaa45f923a4592c9eac98735f24,
+  catPrefab: {fileID: 185677593155355283, guid: 67a9dc741c7fc4fdc94c4d40bac2824c,
     type: 3}
   generationText: {fileID: 1856768836}
   fitnessText: {fileID: 993009719}
@@ -497,7 +497,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberOfJoints: 18
-  numberOfGenes: 7
+  numberOfGenes: 18
 --- !u!114 &594114500
 MonoBehaviour:
   m_ObjectHideFlags: 0
